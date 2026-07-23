@@ -1,0 +1,7 @@
+mne
+torch
+numpy
+scipy
+matplotlib
+umap-learn
+scikit-learn
