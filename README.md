@@ -1,6 +1,6 @@
 # EEGNet: Failure Analysis, Improvement, and a New Idea
 
-Technical evaluation submission — see `ANALYSIS.md` for the required
+Technical evaluation see `ANALYSIS.md` for the required
 Part 1 / Part 3 written analyses (and the Part 2 rationale, which is
 documented inline in `src/sa_eegnet.py`).
 
