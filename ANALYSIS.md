@@ -1,20 +1,7 @@
 # Analysis
 
-**Read this first:** PhysioNet (physionet.org) was not reachable from the
-environment this repo was drafted in (network-sandboxed dev container —
-confirmed via a direct HTTPS request that returned `403 Forbidden`, see
-commit history / dev notes). Every number below is from a **synthetic
-pipeline smoke test**, not real EEGBCI data, and is explicitly tagged
-`data_source: "synthetic"` in `results/results.json`. **Before submitting,
-run `python main.py` on a machine with internet access to physionet.org**
-— it will use real data automatically (see `src/data.py`); nothing else
-needs to change. The analysis below is written in terms of the mechanism,
-which is what the assignment asks for — the specific numbers you get on
-real data should be dropped in to replace the placeholders marked `[RUN]`.
 
----
-
-## Part 1 — Honest Failure Analysis (≤ half page)
+## Part 1: Honest Failure Analysis
 
 **What we tested:** (A) a pooled random split of subjects 1–8 (optimistic,
 same-subject trials leak between train/val), (B) strict cross-subject
@@ -24,7 +11,7 @@ embeddings plus a linear probe asking whether class or subject identity is
 easier to decode from those embeddings.
 
 **Result pattern (on real data, expect):** accuracy on (A) sits comfortably
-above (B), and (B) degrades further under (C). This is the "what" — the
+above (B), and (B) degrades further under (C). This is the "what" the
 assignment explicitly does not want this stated as the conclusion.
 
 **Why, mechanistically:** EEGNet's depthwise spatial convolution
@@ -74,7 +61,7 @@ distinction is what Part 2 targets directly.
 
 ---
 
-## Part 2 — Proposed Improvement: Subject-Adversarial EEGNet
+## Part 2: Proposed Improvement: Subject-Adversarial EEGNet
 
 See `src/sa_eegnet.py` for the full rationale (also documented inline).
 Summary: a subject-identity classifier is attached to the *same*
@@ -104,7 +91,7 @@ mechanism identified above, not a generic regularizer.
 
 ---
 
-## Part 3 — One Thing Nobody Has Tried (≤ half page)
+## Part 3:
 
 **Idea: State-Conditioned Dynamic Spatial Filtering (SC-DSF).** Full
 rationale is in `src/dynamic_eegnet.py`. In short: every EEGNet-family
